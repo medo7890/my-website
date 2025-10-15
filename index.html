@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Buy Old Telegram Group</title>
+<style>
+body{margin:0;font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:#f0f4f8;
+background-image:url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop');
+background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;height:100vh;}
+.container{background-color:rgba(255,255,255,0.9);padding:30px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.15);width:90%;max-width:500px;text-align:center;}
+h1{color:#0088cc;margin-bottom:15px;}
+label{text-align:right;display:block;font-weight:600;margin:10px 0 5px;}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-bottom:15px;font-size:1rem;}
+button{background:#0088cc;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-size:1.1rem;cursor:pointer;}
+button:hover{background:#0074b8;}
+.success{color:green;display:none;margin-top:10px;}
+.error{color:red;display:none;margin-top:10px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>شراء جروبات تيليجرام قديمة</h1>
+<form id="purchaseForm">
+<label for="groupLink">رابط الجروب:</label>
+<input type="text" id="groupLink" required placeholder="https://t.me/joinchat/...">
+<label for="paymentMethod">وسيلة الدفع:</label>
+<select id="paymentMethod">
+<option value="Vodafone Cash">Vodafone Cash</option>
+<option value="USDT">USDT</option>
+<option value="Other">أخرى</option>
+</select>
+<label for="paymentDetail">تفاصيل الدفع:</label>
+<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان" required>
+<label for="notes">ملاحظات إضافية:</label>
+<textarea id="notes" placeholder="مثلاً: الدولة، عدد الأعضاء..."></textarea>
+<button type="submit">إرسال</button>
+<div id="successMessage" class="success">✅ تم الإرسال بنجاح!</div>
+<div id="errorMessage" class="error"></div>
+</form>
+</div>
+<script>
+document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
+ e.preventDefault();
+ const data={
+  groupLink:groupLink.value.trim(),
+  paymentMethod:paymentMethod.value,
+  paymentDetail:paymentDetail.value.trim(),
+  notes:notes.value.trim()
+ };
+ try{
+  const res=await fetch('/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+  if(!res.ok)throw new Error(await res.text());
+  successMessage.style.display='block'; errorMessage.style.display='none'; e.target.reset();
+ }catch(err){successMessage.style.display='none';errorMessage.textContent='❌ '+err.message;errorMessage.style.display='block';}
+});
+</script>
+</body>
+</html>
