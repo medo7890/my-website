@@ -5,22 +5,150 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Buy Old Telegram Group</title>
 <style>
-body{margin:0;font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:#f0f4f8;
-background-image:url('https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1600&auto=format&fit=crop');
-background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;height:100vh;}
-.container{background-color:rgba(255,255,255,0.9);padding:30px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.15);width:90%;max-width:500px;text-align:center;}
-h1{color:#0088cc;margin-bottom:15px;}
-label{text-align:right;display:block;font-weight:600;margin:10px 0 5px;}
-input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-bottom:15px;font-size:1rem;}
-button{background:#0088cc;color:#fff;border:none;padding:12px;width:100%;border-radius:8px;font-size:1.1rem;cursor:pointer;}
-button:hover{background:#0074b8;}
-.success{color:green;display:none;margin-top:10px;}
-.error{color:red;display:none;margin-top:10px;}
+/* --------------------
+   CSS Styles
+   -------------------- */
+body{
+    margin:0;
+    font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
+    background:#17212b; 
+    
+    /* خلفية شعار تيليجرام */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/1024px-Telegram_logo.svg.png'); 
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(23, 33, 43, 0.8); 
+    background-blend-mode: overlay;
+
+    display:flex;
+    flex-direction: column; 
+    align-items:center;
+    justify-content:center;
+    min-height:100vh; 
+}
+
+.container{
+    /* تأثير زجاجي (Glassmorphism effect) */
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 0 40px rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    
+    width:90%;
+    max-width:500px;
+    text-align:center;
+    color: #f0f4f8; 
+    margin-bottom: 20px; 
+}
+
+h1{
+    /* العنوان المزدوج اللغة */
+    color:#0088cc; 
+    margin-bottom:20px;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.4;
+}
+
+h1 span {
+    display: block;
+    font-size: 1.1rem;
+    color: #aeb4b8;
+    font-weight: 300;
+}
+
+label{
+    text-align:right;
+    display:block;
+    font-weight:600;
+    margin:10px 0 5px;
+    color: #aeb4b8; 
+}
+
+input,select,textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #0088cc; 
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:1rem;
+    background-color: rgba(0, 0, 0, 0.3); 
+    color: #f0f4f8; 
+}
+
+/* تنسيق الأزرار الاحترافي */
+button{
+    background: linear-gradient(145deg, #00b0e3, #0077c9);
+    color:#fff;
+    border:none;
+    padding:14px; 
+    width:100%;
+    border-radius:10px;
+    font-size:1.2rem; 
+    cursor:pointer;
+    transition: all 0.3s ease; 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); 
+    font-weight: bold;
+}
+
+button:hover{
+    background: linear-gradient(145deg, #0077c9, #00b0e3); 
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+button:disabled {
+    background: #5c6770;
+    transform: none;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.success{color:#2ecc71;display:none;margin-top:15px;font-weight:bold;}
+.error{color:#e74c3c;display:none;margin-top:15px;font-weight:bold;}
+
+/* تنسيق رابط التواصل السفلي (الفوتر) المُحسّن */
+.contact-footer {
+    color: #aeb4b8;
+    font-size: 0.95rem; /* حجم أكبر قليلاً */
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 8px; /* حواف مستديرة */
+    background-color: rgba(0, 0, 0, 0.3); /* خلفية داكنة شفافة */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-footer a {
+    color: #0088cc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    display: inline-flex; /* لدمج الأيقونة مع النص */
+    align-items: center;
+    gap: 5px; /* مسافة بين الأيقونة والنص */
+}
+
+.contact-footer a:hover {
+    color: #4dc5ff;
+}
+
+/* تنسيق أيقونة تيليجرام */
+.telegram-icon {
+    width: 20px; /* حجم الأيقونة */
+    height: 20px;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png');
+    background-size: cover;
+    display: inline-block;
+}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>شراء جروبات تيليجرام قديمة</h1>
+<h1>شراء جروبات تيليجرام قديمة <span>Buy Old Telegram Groups</span></h1>
+
 <form id="purchaseForm">
 <label for="groupLink">رابط الجروب:</label>
 <input type="text" id="groupLink" required placeholder="https://t.me/joinchat/...">
@@ -31,29 +159,66 @@ button:hover{background:#0074b8;}
 <option value="Other">أخرى</option>
 </select>
 <label for="paymentDetail">تفاصيل الدفع:</label>
-<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان" required>
+<input type="text" id="paymentDetail" placeholder=" رقم المحفظة أو العنوان او id binance" required>
 <label for="notes">ملاحظات إضافية:</label>
-<textarea id="notes" placeholder="مثلاً: الدولة، عدد الأعضاء..."></textarea>
+<textarea id="notes" placeholder="مثلاً: عدد الرسائل,تاريخ الانشاء..."></textarea>
 <button type="submit">إرسال</button>
-<div id="successMessage" class="success">✅ تم الإرسال بنجاح!</div>
+<div id="successMessage" class="success">✅ تم الإرسال بنجاح الرجاء تحويل الملكية الى medo !</div>
 <div id="errorMessage" class="error"></div>
 </form>
 </div>
+
+<div class="contact-footer">
+    للتواصل والإستفسار: 
+    <a href="https://t.me/Vl_K0" target="_blank">
+        <span class="telegram-icon"></span> @Vl_K0
+    </a>
+</div>
+
 <script>
+// JavaScript Logic (لم يتغير)
 document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
  e.preventDefault();
+ const form = e.target;
+ const submitButton = form.querySelector('button[type="submit"]');
+ const successMessage = document.getElementById('successMessage');
+ const errorMessage = document.getElementById('errorMessage');
+ 
+ submitButton.disabled = true;
+ submitButton.textContent = 'جاري الإرسال...';
+ successMessage.style.display = 'none'; 
+ errorMessage.style.display = 'none';
+
  const data={
-  groupLink:groupLink.value.trim(),
-  paymentMethod:paymentMethod.value,
-  paymentDetail:paymentDetail.value.trim(),
-  notes:notes.value.trim()
+  groupLink:document.getElementById('groupLink').value.trim(),
+  paymentMethod:document.getElementById('paymentMethod').value,
+  paymentDetail:document.getElementById('paymentDetail').value.trim(),
+  notes:document.getElementById('notes').value.trim()
  };
+ 
  try{
-  const res=await fetch('/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-  if(!res.ok)throw new Error(await res.text());
-  successMessage.style.display='block'; errorMessage.style.display='none'; e.target.reset();
- }catch(err){successMessage.style.display='none';errorMessage.textContent='❌ '+err.message;errorMessage.style.display='block';}
+  const res = await fetch('/send',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(data)
+  });
+  
+  if(!res.ok){
+      const errorData = await res.json();
+      throw new Error(errorData.error || res.statusText);
+  }
+  
+  successMessage.style.display='block'; 
+  form.reset();
+  
+ }catch(err){
+    errorMessage.textContent='❌ خطأ: '+err.message;
+    errorMessage.style.display='block';
+ } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'إرسال';
+ }
 });
 </script>
 </body>
-</html>
+ </html>
