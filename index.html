@@ -20,16 +20,21 @@ body{
     padding: 20px 10px; 
     position: relative;
     
-    /* 🔴 التعديل النهائي لحل مشكلة الخط (إخفاء شريط التمرير) */
-    overflow: hidden; 
+    /* 🔴 تصحيح مشكلة التمرير: إزالة خاصية overflow: hidden; */
+    /* يتم السماح بالتمرير الطبيعي (auto) */
+    overflow-x: hidden;
+    overflow-y: auto; 
 }
-/* السماح بعرض شريط التمرير داخل القائمة الجانبية فقط عند الحاجة */
+
+/* --------------------
+   تنسيقات القائمة الجانبية وزر الفتح
+   -------------------- */
 .sidebar {
     position: fixed;top: 0;right: -300px;width: 280px;height: 100%;
     background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); 
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);border-left: 1px solid rgba(255, 255, 255, 0.1);
     transition: right 0.4s ease-in-out;padding: 20px;padding-top: 60px;z-index: 100;color: #f0f4f8;
-    overflow-y: auto; /* مهم: السماح بالتمرير داخل القائمة الجانبية إذا كان المحتوى طويلاً */
+    overflow-y: auto; 
 }
 .sidebar.open { right: 0; }
 .menu-toggle {
@@ -125,7 +130,7 @@ button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-sha
 <label for="paymentDetail">تفاصيل الدفع:</label>
 <input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان أو id binance" required>
 <label for="notes">ملاحظات إضافية:</label>
-<textarea id="notes" placeholder="مثلاً:عدد الرسائل، تاريخ الإنشاء..."></textarea>
+<textarea id="notes" placeholder="مثلاً: عدد الرسائل، تاريخ الإنشاء..."></textarea>
 <button type="submit">إرسال</button>
 <div id="successMessage" class="success">✅ تم الإرسال بنجاح!</div>
 <div id="errorMessage" class="error"></div>
