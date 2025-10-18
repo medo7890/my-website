@@ -20,20 +20,16 @@ body{
     padding: 20px 10px; 
     position: relative;
     
-    /* 🔴 تصحيح مشكلة الخط الجانبي الأبيض */
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* 🔴 التعديل النهائي لحل مشكلة الخط (إخفاء شريط التمرير) */
+    overflow: hidden; 
 }
-
-/* --------------------
-   تنسيقات القائمة الجانبية وزر الفتح
-   -------------------- */
+/* السماح بعرض شريط التمرير داخل القائمة الجانبية فقط عند الحاجة */
 .sidebar {
     position: fixed;top: 0;right: -300px;width: 280px;height: 100%;
     background-color: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); 
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);border-left: 1px solid rgba(255, 255, 255, 0.1);
     transition: right 0.4s ease-in-out;padding: 20px;padding-top: 60px;z-index: 100;color: #f0f4f8;
-    overflow-y: auto; 
+    overflow-y: auto; /* مهم: السماح بالتمرير داخل القائمة الجانبية إذا كان المحتوى طويلاً */
 }
 .sidebar.open { right: 0; }
 .menu-toggle {
@@ -45,26 +41,13 @@ body{
 }
 .menu-toggle::before {content: '\2263';text-indent: 0;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);font-size: 28px;line-height: 1;}
 .menu-toggle:hover { background: #0077c9; }
-
-/* 🔴 تحسين تنسيق عنصر "فكرة الموقع" ليكون زرًا فخمًا */
 .sidebar-item {
-    margin-bottom: 20px; /* مسافة إضافية */
-    padding: 14px 12px; /* حشوة أكبر */
-    cursor: pointer;
-    border-radius: 10px; /* حواف مستديرة أكثر */
-    font-weight: 600;
-    font-size: 1.15rem; /* خط أكبر */
-    color: #4dc5ff; /* لون أزرق فاتح */
-    
-    /* مظهر الزر الفخم */
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid #0088cc; /* إطار أزرق واضح */
-    box-shadow: 0 0 10px rgba(0, 136, 204, 0.5); /* توهج أزرق خفيف */
-
+    margin-bottom: 20px; padding: 14px 12px; cursor: pointer;border-radius: 10px; font-weight: 600; font-size: 1.15rem; color: #4dc5ff; 
+    background: rgba(255, 255, 255, 0.05); border: 1px solid #0088cc; box-shadow: 0 0 10px rgba(0, 136, 204, 0.5); 
     transition: all 0.2s;
 }
 .sidebar-item:hover {
-    background-color: rgba(255, 255, 255, 0.15); /* إضاءة عند المرور */
+    background-color: rgba(255, 255, 255, 0.15); 
     box-shadow: 0 0 15px rgba(0, 136, 204, 0.8);
 }
 
@@ -79,10 +62,12 @@ body{
     background-color: rgba(255, 255, 255, 0.08); 
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px); 
+    
     padding: 30px 15px; 
     border-radius:18px; 
     box-shadow:0 10px 40px rgba(0, 0, 0, 0.5); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
+    
     width: 95%; 
     max-width:550px; 
     text-align:right; 
@@ -98,21 +83,8 @@ select {appearance: none;padding-left: 30px;}
 button {background: linear-gradient(145deg, #00b0e3, #0077c9);color: #fff;border: none;padding: 16px; width: 100%;border-radius: 12px; font-size: 1.3rem; cursor: pointer;box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); font-weight: bold;letter-spacing: 1px;}
 button:hover{ background: linear-gradient(145deg, #0077c9, #00b0e3); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
 button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-shadow: none;}
-
-/* 🔴 تصحيح رسالة النجاح (إخفاء في البداية) */
-#successMessage {
-    color: #2ecc71;
-    display: none; 
-    margin-top: 15px;
-    font-weight: bold;
-}
-#errorMessage {
-    color: #e74c3c;
-    display: none;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
+#successMessage {color: #2ecc71;display: none; margin-top: 15px;font-weight: bold;}
+#errorMessage {color: #e74c3c;display: none;margin-top: 15px;font-weight: bold;}
 .contact-footer {color: #aeb4b8;font-size: 0.9rem;padding: 10px 15px; margin-bottom: 15px; text-align: center;border-radius: 10px; background-color: rgba(0, 0, 0, 0.4); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);z-index: 10;}
 .contact-footer a {color: #00b0e3;text-decoration: none;font-weight: bold;display: inline-flex;align-items: center;gap: 8px;transition: color 0.3s;}
 .contact-footer a:hover {color: #79d2ff;}
@@ -197,7 +169,7 @@ document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
  const successMessage = document.getElementById('successMessage');
  const errorMessage = document.getElementById('errorMessage');
  
- // 🔴 تصحيح مشكلة ظهور الرسالة الدائم: إعادة ضبطها قبل البدء
+ // تصحيح مشكلة ظهور الرسالة الدائم: إعادة ضبطها قبل البدء
  successMessage.style.display = 'none'; 
  errorMessage.style.display = 'none';
 
