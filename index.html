@@ -23,47 +23,6 @@ body{
 }
 
 /* --------------------
-   تنسيقات الفقاعات المتحركة (Bubble fix: صعوداً ونزولاً)
-   -------------------- */
-.bubbles {
-    position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;
-}
-.bubbles li {
-    position: absolute;list-style: none;display: block;width: 20px;height: 20px;
-    background: rgba(255, 255, 255, 0.1); /* شفافية أقل وأكثر نعومة */
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(77, 197, 255, 0.4);
-}
-
-/* الفقاعات الصاعدة (الأرقام الفردية) */
-.bubbles li:nth-child(odd){animation: animate-up 20s linear infinite;}
-/* الفقاعات الهابطة (الأرقام الزوجية) */
-.bubbles li:nth-child(even){animation: animate-down 25s linear infinite;}
-
-/* تعريف الحركة الصاعدة (من تحت لفوق) */
-@keyframes animate-up {
-    0%{transform: translateY(0) rotate(0deg);opacity: 0.1;}
-    100%{transform: translateY(-1000px) rotate(360deg);opacity: 0;}
-}
-/* تعريف الحركة الهابطة (من فوق لتحت) */
-@keyframes animate-down {
-    0%{transform: translateY(0) rotate(0deg);opacity: 0.1;}
-    100%{transform: translateY(1000px) rotate(-360deg);opacity: 0;}
-}
-
-/* تحديد مواقع الفقاعات وحجمها ومدة حركتها بشكل عشوائي */
-.bubbles li:nth-child(1){left: 25%;width: 80px;height: 80px;animation-delay: 0s;}
-.bubbles li:nth-child(2){left: 10%;width: 20px;height: 20px;animation-delay: 2s;animation-duration: 12s;top: -150px;}
-.bubbles li:nth-child(3){left: 70%;width: 20px;height: 20px;animation-delay: 4s;}
-.bubbles li:nth-child(4){left: 40%;width: 60px;height: 60px;animation-delay: 0s;animation-duration: 18s;top: -100px;}
-.bubbles li:nth-child(5){left: 65%;width: 20px;height: 20px;animation-delay: 0s;}
-.bubbles li:nth-child(6){left: 75%;width: 110px;height: 110px;animation-delay: 3s;top: -200px;}
-.bubbles li:nth-child(7){left: 35%;width: 150px;height: 150px;animation-delay: 7s;}
-.bubbles li:nth-child(8){left: 50%;width: 25px;height: 25px;animation-delay: 15s;animation-duration: 45s;top: -50px;}
-.bubbles li:nth-child(9){left: 20%;width: 15px;height: 15px;animation-delay: 2s;animation-duration: 35s;}
-.bubbles li:nth-child(10){left: 85%;width: 150px;height: 150px;animation-delay: 11s;top: -120px;}
-
-/* --------------------
    تنسيقات القائمة الجانبية وزر الفتح (Menu Toggle Fix)
    -------------------- */
 .sidebar {
@@ -75,33 +34,49 @@ body{
 }
 .sidebar.open { right: 0; }
 
-/* 🔴 تصحيح موضع زر الهمبرغر والوانه */
+/* 🔴 تصحيح موضع زر الهمبرغر */
 .menu-toggle {
     position: fixed;
-    top: 15px; /* رفع الموضع للأعلى قليلاً */
+    top: 15px; 
     right: 15px;
-    width: 40px; /* تكبير الزر قليلاً */
+    width: 40px; 
     height: 40px;
-    background: linear-gradient(135deg, #00b0e3, #0077c9); /* لون متدرج (أصلي) */
+    background: #0088cc; /* لون ثابت بسيط */
     border-radius: 50%;
     color: white; 
-    font-size: 30px; /* تكبير رمز الثلاث شرطات */
-    line-height: 40px; /* محاذاة النص في المنتصف */
+    font-size: 30px; 
+    line-height: 40px; 
     text-align: center;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     z-index: 101;
     transition: background 0.3s;
     border: none;
+    /* لإخفاء الدائرة المحيطة بالنص ☰ في الهواتف */
+    text-indent: -9999px; 
+    overflow: hidden;
+    position: relative;
 }
-.menu-toggle:hover { background: linear-gradient(135deg, #0077c9, #00b0e3); }
+/* إعادة بناء رمز الهمبرغر (☰) يدويًا داخل الزر */
+.menu-toggle::before {
+    content: '\2263'; /* رمز الهمبرغر */
+    text-indent: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    line-height: 1;
+}
+
+.menu-toggle:hover { background: #0077c9; }
 .sidebar-item {margin-bottom: 15px;padding: 12px;cursor: pointer;border-radius: 8px;font-weight: 600;font-size: 1.1rem;color: #4dc5ff;transition: background 0.2s, color 0.2s;border: 1px solid transparent;}
 .sidebar-item:hover {background-color: rgba(255, 255, 255, 0.1);border: 1px solid #4dc5ff;}
 .explanation {padding: 15px;margin-top: 10px;border-radius: 8px;background-color: rgba(0, 0, 0, 0.3);font-size: 0.95rem;line-height: 1.6;color: #c7d2e4;max-height: 0;overflow: hidden;transition: max-height 0.4s ease-out, padding 0.4s;opacity: 0;}
 .explanation.show {max-height: 500px;padding: 15px;opacity: 1;}
 
 /* --------------------
-   تنسيقات المحتوى الرئيسي (Container) (Responsive Fixes)
+   تنسيقات المحتوى الرئيسي (Container)
    -------------------- */
 .container{
     z-index: 10; 
@@ -109,47 +84,42 @@ body{
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px); 
     
-    padding: 30px 15px; /* تقليل الحشوة الأفقية جداً */
+    padding: 30px 15px; 
     border-radius:18px; 
     box-shadow:0 10px 40px rgba(0, 0, 0, 0.5); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
     
-    width: 95%; /* زيادة العرض لـ 95% من الشاشة */
+    width: 95%; 
     max-width:550px; 
-    text-align:right; /* محاذاة النصوص لليمين */
+    text-align:right; 
     color: #f0f4f8; 
     margin-top: 60px; 
     margin-bottom: 25px; 
 }
 
-/* 🔴 تصحيح التسميات والحقول (Labels & Inputs) */
-label {
-    text-align: right;
+/* 🔴 تصحيح ألوان العنوان (العربي: أزرق فاتح، الإنجليزي: رصاصي فاتح) */
+h1{
+    text-align: center;
+    color: #00b0e3; /* الازرق الفاتح المطلوب */
+    margin-bottom:20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(77, 197, 255, 0.4); 
+    line-height: 1.2;
+}
+h1 span {
+    font-size: 1.1rem;
+    color: #aeb4b8; /* الرصاصي الفاتح المطلوب */
+    font-weight: 400;
     display: block;
-    font-weight: 600;
-    margin: 15px 0 5px; /* تقليل المسافة أسفل الليبل */
-    color: #c7d2e4;
-    font-size: 1.05rem;
+    margin-top: 2px;
 }
 
-input, select, textarea {
-    width: 100%;
-    padding: 12px; /* تقليل الحشوة قليلاً */
-    border-radius: 10px;
-    margin-bottom: 15px;
-    font-size: 1rem;
-    background-color: rgba(0, 0, 0, 0.4); 
-    color: #f0f4f8; 
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-    /* 🔴 ضمان عرض الحقل بالكامل (مهم جداً) */
-    box-sizing: border-box; 
-}
-select {
-    appearance: none; /* إزالة سهم الاختيار الافتراضي */
-    padding-left: 30px; /* لترك مساحة لرمز الاختيار */
-}
+label {text-align: right;display: block;font-weight: 600;margin: 15px 0 5px;color: #c7d2e4;font-size: 1.05rem;}
+input, select, textarea {width: 100%;padding: 12px;border-radius: 10px;margin-bottom: 15px;font-size: 1rem;background-color: rgba(0, 0, 0, 0.4);color: #f0f4f8;box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);box-sizing: border-box;}
+select {appearance: none;padding-left: 30px;}
 
-/* 🔴 تصحيح لون الزر "إرسال" (اللون المتدرج الأصلي) */
+/* 🔴 زر الإرسال (اللون المتدرج الغامق الأصلي) */
 button {
     background: linear-gradient(145deg, #00b0e3, #0077c9);
     color: #fff;
@@ -164,26 +134,29 @@ button {
     letter-spacing: 1px;
 }
 button:hover{ background: linear-gradient(145deg, #0077c9, #00b0e3); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); }
+button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-shadow: none;}
 
 
-/* 🔴 تصحيح مشكلة تداخل العناوين (H1) */
-h1{
-    text-align: center; /* إرجاع المحاذاة للمنتصف */
-    color: #4dc5ff; 
-    margin-bottom:20px;
-    font-size: 1.8rem; /* تصغير الخط قليلاً */
-    line-height: 1.2;
+/* 🔴 تصحيح رسائل النجاح والخطأ (إخفاء رسالة النجاح في البداية) */
+#successMessage {
+    color: #2ecc71;
+    display: none; /* الأهم: يجب أن تكون مخفية افتراضيًا */
+    margin-top: 15px;
+    font-weight: bold;
 }
-h1 span {
-    font-size: 1.1rem;
-    display: block;
+#errorMessage {
+    color: #e74c3c;
+    display: none;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
-/* 🔴 تصحيح الفوتر (للتواصل) لضمان ظهوره كاملاً */
+
+/* 🔴 تصحيح لون اليوزر في الفوتر */
 .contact-footer {
     color: #aeb4b8;
     font-size: 0.9rem;
-    padding: 10px 15px; /* تقليل الحشوة الأفقية */
+    padding: 10px 15px; 
     margin-bottom: 15px; 
     text-align: center;
     border-radius: 10px; 
@@ -191,15 +164,20 @@ h1 span {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
+.contact-footer a {
+    color: #00b0e3; /* 🔴 اللون الأزرق الفاتح المطلوب لليوزر */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s;
+}
+.contact-footer a:hover {color: #79d2ff;}
+.telegram-icon {width: 20px;height: 20px;background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/512px-Telegram_logo.svg.png');background-size: cover;display: inline-block;}
 </style>
 </head>
 <body>
-
-<div class="bubbles">
-    <ul class="box">
-        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
-    </ul>
-</div>
 
 <button class="menu-toggle" id="menuToggle">☰</button>
 
@@ -231,7 +209,7 @@ h1 span {
 <option value="Other">أخرى</option>
 </select>
 <label for="paymentDetail">تفاصيل الدفع:</label>
-<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان أو معرف بينانس" required>
+<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان او id binance" required>
 <label for="notes">ملاحظات إضافية:</label>
 <textarea id="notes" placeholder="مثلاً: عدد الرسائل، تاريخ الإنشاء..."></textarea>
 <button type="submit">إرسال</button>
@@ -277,10 +255,13 @@ document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
  const successMessage = document.getElementById('successMessage');
  const errorMessage = document.getElementById('errorMessage');
  
- submitButton.disabled = true;
- submitButton.textContent = 'جاري الإرسال...';
+ // 🔴 إعادة ضبط الرسائل هنا (لتصحيح مشكلة الظهور الدائم)
  successMessage.style.display = 'none'; 
  errorMessage.style.display = 'none';
+
+ submitButton.disabled = true;
+ submitButton.textContent = 'جاري الإرسال...';
+ 
 
  const data={
   groupLink:document.getElementById('groupLink').value.trim(),
@@ -301,10 +282,12 @@ document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
       throw new Error(errorData.error || res.statusText);
   }
   
+  // النجاح
   successMessage.style.display='block'; 
   form.reset();
   
  }catch(err){
+    // الفشل
     errorMessage.textContent='❌ خطأ: '+err.message;
     errorMessage.style.display='block';
  } finally {
