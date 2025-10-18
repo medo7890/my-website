@@ -6,23 +6,18 @@
 <title>Buy Old Telegram Group</title>
 <style>
 /* --------------------
-   CSS Styles
+   CSS Styles: Body & Background
    -------------------- */
 body{
     margin:0;
     font-family:'Segoe UI',Tahoma,Verdana,sans-serif;
-    
-    /* الخلفية كما هي (فخمة ومتدرجة) */
     background: linear-gradient(135deg, #091225 0%, #1a304e 100%); 
-
     display:flex;
     flex-direction: column; 
     align-items:center;
     justify-content:center;
     min-height:100vh; 
     padding: 20px;
-    
-    /* هام: السماح لعناصر الخلفية بالتحرك */
     position: relative;
     overflow: hidden; 
 }
@@ -31,28 +26,14 @@ body{
    تنسيقات الفقاعات المتحركة (Bubbly Background)
    -------------------- */
 .bubbles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* تأكد أن الفقاعات خلف المحتوى */
+    position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 0;
 }
-
 .bubbles li {
-    position: absolute;
-    list-style: none;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.15); /* لون أبيض شفاف */
-    border-radius: 50%;
-    animation: animate 25s linear infinite; /* تحديد الحركة */
-    bottom: -150px; /* بدء الحركة من أسفل الصفحة */
-    box-shadow: 0 0 10px rgba(77, 197, 255, 0.5); /* توهج خفيف */
+    position: absolute;list-style: none;display: block;width: 20px;height: 20px;
+    background: rgba(255, 255, 255, 0.15);border-radius: 50%;
+    animation: animate 25s linear infinite;bottom: -150px;
+    box-shadow: 0 0 10px rgba(77, 197, 255, 0.5);
 }
-
-/* تحديد مواقع الفقاعات وحجمها ومدة حركتها بشكل عشوائي */
 .bubbles li:nth-child(1){left: 25%;width: 80px;height: 80px;animation-delay: 0s;}
 .bubbles li:nth-child(2){left: 10%;width: 20px;height: 20px;animation-delay: 2s;animation-duration: 12s;}
 .bubbles li:nth-child(3){left: 70%;width: 20px;height: 20px;animation-delay: 4s;}
@@ -64,55 +45,120 @@ body{
 .bubbles li:nth-child(9){left: 20%;width: 15px;height: 15px;animation-delay: 2s;animation-duration: 35s;}
 .bubbles li:nth-child(10){left: 85%;width: 150px;height: 150px;animation-delay: 11s;}
 
-
-/* تعريف الحركة الفعلية (التحرك للأعلى مع تغيير الشفافية) */
 @keyframes animate {
-    0%{
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.1;
-        border-radius: 0;
-    }
-    50%{
-        opacity: 0.2;
-    }
-    100%{
-        transform: translateY(-1000px) rotate(720deg);
-        opacity: 0;
-        border-radius: 50%;
-    }
+    0%{transform: translateY(0) rotate(0deg);opacity: 0.1;border-radius: 0;}
+    50%{opacity: 0.2;}
+    100%{transform: translateY(-1000px) rotate(720deg);opacity: 0;border-radius: 50%;}
+}
+
+/* --------------------
+   تنسيقات القائمة الجانبية (Sidebar)
+   -------------------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* إخفاء القائمة خارج الشاشة */
+    width: 280px;
+    height: 100%;
+    
+    /* تصميم الزجاج المطفأ */
+    background-color: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+
+    transition: right 0.4s ease-in-out; /* حركة سلسة للظهور */
+    padding: 20px;
+    padding-top: 60px;
+    z-index: 100; /* تأكد أنها فوق كل شيء */
+    color: #f0f4f8;
+}
+
+.sidebar.open {
+    right: 0; /* لإظهار القائمة */
+}
+
+/* زر إغلاق (الهمبرغر) */
+.menu-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #00b0e3, #0077c9);
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 101;
+    transition: background 0.3s;
+    border: none;
+}
+.menu-toggle:hover { background: linear-gradient(135deg, #0077c9, #00b0e3); }
+
+
+/* تنسيق عناصر القائمة الداخلية */
+.sidebar-item {
+    margin-bottom: 15px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #4dc5ff;
+    transition: background 0.2s, color 0.2s;
+    border: 1px solid transparent;
+}
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #4dc5ff;
+}
+
+/* تنسيق النص التوضيحي */
+.explanation {
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #c7d2e4;
+    max-height: 0; /* لإخفاء النص في البداية */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s;
+    opacity: 0;
+}
+.explanation.show {
+    max-height: 500px; /* لفتح النص (يجب أن يكون أكبر من محتوى النص) */
+    padding: 15px;
+    opacity: 1;
 }
 
 /* --------------------
    تنسيقات المحتوى الرئيسي (Container)
    -------------------- */
 .container{
-    z-index: 10; /* تأكد أن المحتوى يظهر فوق الفقاعات */
+    z-index: 10; 
     background-color: rgba(255, 255, 255, 0.08); 
     backdrop-filter: blur(15px); 
     -webkit-backdrop-filter: blur(15px); 
-    
     padding:40px; 
     border-radius:18px; 
     box-shadow:0 10px 40px rgba(0, 0, 0, 0.5); 
     border: 1px solid rgba(255, 255, 255, 0.1); 
-    
     width:90%;
     max-width:550px; 
     text-align:center;
     color: #f0f4f8; 
     margin-bottom: 25px; 
 }
+
 /* ... (باقي تنسيقات h1, label, input, button, footer كما هي) ... */
-
-h1{
-    color: #4dc5ff; 
-    margin-bottom:25px;
-    font-size: 2rem;
-    font-weight: 700;
-    text-shadow: 0 0 10px rgba(77, 197, 255, 0.4); 
-    line-height: 1.3;
-}
-
+h1{color: #4dc5ff; margin-bottom:25px;font-size: 2rem;font-weight: 700;text-shadow: 0 0 10px rgba(77, 197, 255, 0.4);line-height: 1.3;}
 h1 span {font-size: 1.2rem;color: #aeb4b8;font-weight: 400;margin-top: 5px;}
 label{text-align:right;display:block;font-weight:600;margin:15px 0 8px;color: #c7d2e4;font-size: 1.05rem;}
 input,select,textarea{width:100%;padding:14px;border:1px solid #0088cc;border-radius:12px;margin-bottom:20px;font-size:1rem;background-color: rgba(0, 0, 0, 0.4);color: #f0f4f8;box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);}
@@ -131,25 +177,33 @@ button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-sha
 
 <div class="bubbles">
     <ul class="box">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
     </ul>
 </div>
+
+<button class="menu-toggle" id="menuToggle">☰</button>
+
+<div class="sidebar" id="sidebar">
+    <div 
+        class="sidebar-item" 
+        id="toggleIdea" 
+        onclick="toggleExplanation()"
+    >
+        فكرة الموقع
+    </div>
+    
+    <div class="explanation" id="siteIdeaExplanation">
+        هذا الموقع مصمم لتسهيل عملية بيع المجموعات القديمة الخاصة بتليجرام. كل ما عليك هو إرسال رابط المجموعة في أول خانة، ثم تحديد وسيلة استلام الأموال الخاصة بك (سواء كانت فودافون كاش أو USDT)، ومن ثم وضع الوسيلة سواء كان رقم محفظة فودافون كاش أو اورنج كاش أو اتصالات كاش أو وي باي أو معرف حسابك في بينانس أو عنوان شبكة bep20 أو polygon مع التحديد. ويمكنك وضع معلومات عن المجموعة التي تريد بيعها مثل تاريخ الإنشاء أو عدد الرسائل القديمة بها. ثم اضغط على "إرسال"، سوف تصلني رسالتك وسوف أنضم إلى المجموعة عبر حسابي <a href="https://t.me/Vl_K0" target="_blank" style="color: #4dc5ff; font-weight: bold;">@Vl_K0</a>. والآن الخطوة الأخيرة: تقوم بنقل ملكية المجموعة إليّ وتقوم بإرسال رسالة بها محتواها "تم". وها قد انتهينا يا صديقي، تأكد من وصول الأموال إلى حسابك وأتمنى لك يوم سعيد 🖤.
+    </div>
+    
+    </div>
 
 <div class="container">
 <h1>شراء جروبات تيليجرام قديمة <span>Buy Old Telegram Groups</span></h1>
 
 <form id="purchaseForm">
 <label for="groupLink">رابط الجروب:</label>
-<input type="text" id="groupLink" required placeholder="https://t.me/joinchat/...">
+<input type="text" id="groupLink" required placeholder=".../https://t.me/joinchat">
 <label for="paymentMethod">وسيلة الدفع:</label>
 <select id="paymentMethod">
 <option value="Vodafone Cash">Vodafone Cash</option>
@@ -157,9 +211,9 @@ button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-sha
 <option value="Other">أخرى</option>
 </select>
 <label for="paymentDetail">تفاصيل الدفع:</label>
-<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان" required>
+<input type="text" id="paymentDetail" placeholder="رقم المحفظة أو العنوان او id binance" required>
 <label for="notes">ملاحظات إضافية:</label>
-<textarea id="notes" placeholder="مثلاً: الدولة، عدد الرسائل، تاريخ الإنشاء..."></textarea>
+<textarea id="notes" placeholder="مثلاً: عدد الرسائل، تاريخ الإنشاء..."></textarea>
 <button type="submit">إرسال</button>
 <div id="successMessage" class="success">✅ تم الإرسال بنجاح!</div>
 <div id="errorMessage" class="error"></div>
@@ -174,7 +228,28 @@ button:disabled {background: #5c6770;transform: none;cursor: not-allowed;box-sha
 </div>
 
 <script>
-// JavaScript Logic (لم يتغير)
+// --------------------
+// JavaScript الخاص بالقائمة الجانبية (Sidebar Logic)
+// --------------------
+
+const sidebar = document.getElementById('sidebar');
+const menuToggle = document.getElementById('menuToggle');
+const explanation = document.getElementById('siteIdeaExplanation');
+
+// 1. دالة فتح/إغلاق القائمة الجانبية بالكامل
+menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+});
+
+// 2. دالة فتح/إغلاق نص الشرح (فكرة الموقع)
+function toggleExplanation() {
+    explanation.classList.toggle('show');
+}
+
+
+// --------------------
+// JavaScript الخاص بالنموذج (Form Submission Logic)
+// --------------------
 document.getElementById('purchaseForm').addEventListener('submit', async(e)=>{
  e.preventDefault();
  const form = e.target;
